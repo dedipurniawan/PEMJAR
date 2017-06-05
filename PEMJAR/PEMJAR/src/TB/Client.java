@@ -9,7 +9,7 @@ public class Client {
 	public static void main(String args[]) {
 		try {
 			String hostName;
-			String portNum = "4444";
+			String portNum = "2222";
 			String registryURL = "rmi://localhost:" + portNum + "/TB";
 			Interface h = (Interface) Naming.lookup(registryURL);
 			// invoke the remote method(s)
