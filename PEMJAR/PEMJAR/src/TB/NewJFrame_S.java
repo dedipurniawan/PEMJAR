@@ -45,7 +45,7 @@ public class NewJFrame_S extends javax.swing.JFrame {
     public NewJFrame_S() throws RemoteException, MalformedURLException, NotBoundException {
 
         initComponents();        
-        String portNum = "8080", registryURL;
+        String portNum = "4444", registryURL;
         try {
             startRegistry(Integer.parseInt(portNum));
             // register the object under the name "TB"

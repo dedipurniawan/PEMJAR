@@ -32,7 +32,7 @@ import javax.swing.text.Document;
 
 public class NewJFrame_C extends javax.swing.JFrame  {
         String hostName;
-        String portNum = "8080";
+        String portNum = "4444";
         String registryURL = "rmi://localhost:" + portNum + "/TB";
         Interface h;
         Impl im = new Impl();

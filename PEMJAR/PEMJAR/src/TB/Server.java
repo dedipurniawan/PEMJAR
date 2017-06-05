@@ -9,7 +9,7 @@ import java.io.*;
 
 public class Server  {
   public static void main(String args[]) {
-    String portNum = "8080", registryURL;
+    String portNum = "4444", registryURL;
     try{   
       Impl exportedObj = new Impl();
       startRegistry( Integer.parseInt(portNum) );
