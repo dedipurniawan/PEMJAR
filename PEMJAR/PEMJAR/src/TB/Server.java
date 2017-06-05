@@ -16,7 +16,7 @@ public class Server  {
       // register the object under the name "TB"
       registryURL = "rmi://localhost:" + portNum + "/TB";
       Naming.rebind(registryURL, exportedObj);
-      System.out.println("Server ready.");
+      System.out.println("Server ready");
     } catch (Exception re) {
       System.out.println("Exception in Server.main: " + re);
     }

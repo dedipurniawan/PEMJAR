@@ -169,11 +169,11 @@ public class Main extends javax.swing.JFrame {
                     Logger.getLogger(NewJFrame_C.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (Exception ex) {
                     Logger.getLogger(NewJFrame_C.class.getName()).log(Level.SEVERE, null, ex);
-                }        // TODO add your handling code here:
+                }        
     }//GEN-LAST:event_clientActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-  System.exit(0);     
+    	System.exit(0);     
     }
 
     public static void main(String args[]) {
@@ -201,7 +201,6 @@ public class Main extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton client;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

@@ -65,7 +65,7 @@ public class NewJFrame_C extends javax.swing.JFrame  {
     }
  
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    //GEN-BEGIN:initComponents
     private void initComponents() {
 
     	jScrollPane1 = new javax.swing.JScrollPane();
@@ -134,7 +134,8 @@ public class NewJFrame_C extends javax.swing.JFrame  {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
+    //GEN-END:initComponents
 
     protected void SaveActionPerformed(java.awt.event.ActionEvent evt) {
 		// TODO Auto-generated method stub
@@ -147,12 +148,10 @@ public class NewJFrame_C extends javax.swing.JFrame  {
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }
-        }
-		
+        }		
 	}
 
 	protected void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {
-		// TODO Auto-generated method stub
 		JFileChooser dialog = new JFileChooser();
         //File file = open.getSelectedFile();
         //String dir = file.getAbsolutePath();
@@ -178,8 +177,7 @@ public class NewJFrame_C extends javax.swing.JFrame  {
 
         } else {
             JOptionPane.showMessageDialog(null, "Batal Buka File ..");
-        }
-		
+        }		
 	}
 
 	protected void OpenActionPerformed(java.awt.event.ActionEvent evt) {

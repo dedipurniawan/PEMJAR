@@ -156,7 +156,7 @@ public class NewJFrame_S extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>                        
+    }                       
 
     ArrayList<String> textRequested = new ArrayList<String>();
     String textRequested1;
@@ -171,7 +171,6 @@ public class NewJFrame_S extends javax.swing.JFrame {
 
     private void jTextArea2KeyPressed(java.awt.event.KeyEvent evt) {                                      
         yangdilakukan();
-
     }                                     
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
@@ -202,7 +201,6 @@ public class NewJFrame_S extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Batal Buka File ..");
         }
-
     }                                          
 
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {                                     
