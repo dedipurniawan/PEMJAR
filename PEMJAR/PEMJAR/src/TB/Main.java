@@ -33,13 +33,25 @@ import javax.swing.event.DocumentListener;
 import javax.swing.text.Document;
 
 public class Main extends javax.swing.JFrame {
+	private javax.swing.JButton client;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPanel jPanel1;
+    private java.awt.Menu menu1;
+    private java.awt.Menu menu2;
+    private java.awt.Menu menu3;
+    private java.awt.Menu menu4;
+    private java.awt.MenuBar menuBar1;
+    private java.awt.MenuBar menuBar2;
+    private javax.swing.JButton server;
+    
     public Main() {
         initComponents();
     }
 
     @SuppressWarnings("unchecked")
     private void initComponents() {
-
         jPanel1 = new javax.swing.JPanel();
         menuBar1 = new java.awt.MenuBar();
         menu1 = new java.awt.Menu();
@@ -51,7 +63,7 @@ public class Main extends javax.swing.JFrame {
         client = new javax.swing.JButton();
         server = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();        
+        jButton1 = new javax.swing.JButton();
         
         this.setTitle("Notepad Author"); // set the title of the window
 		setDefaultCloseOperation(EXIT_ON_CLOSE); // set the default close operation (exit when it gets closed)
@@ -83,6 +95,8 @@ public class Main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        
+        
         client.setText("CLIENT");
         client.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,15 +160,15 @@ public class Main extends javax.swing.JFrame {
     	//GEN-FIRST:event_serverActionPerformed
     	//server.enable(false);
         try {
-                    System.out.println("ServerClient");
+                    System.out.println("Notepad");
                     server.setEnabled(false);
                     new NewJFrame_S().setVisible(true);
                 } catch (RemoteException ex) {
-                    Logger.getLogger(NewJFrame_C.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(NewJFrame_S.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (MalformedURLException ex) {
-                    Logger.getLogger(NewJFrame_C.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(NewJFrame_S.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (NotBoundException ex) {
-                    Logger.getLogger(NewJFrame_C.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(NewJFrame_S.class.getName()).log(Level.SEVERE, null, ex);
                 }               
         }
 
@@ -171,7 +185,8 @@ public class Main extends javax.swing.JFrame {
                     Logger.getLogger(NewJFrame_C.class.getName()).log(Level.SEVERE, null, ex);
                 }        
     }//GEN-LAST:event_clientActionPerformed
-
+    
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     	System.exit(0);     
     }
@@ -179,38 +194,25 @@ public class Main extends javax.swing.JFrame {
     public static void main(String args[]) {
     	try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Notepad".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewJFrame_C.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewJFrame_C.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewJFrame_C.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewJFrame_C.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     	
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Main().setVisible(true);
+            	new Main().setVisible(true);
             }
         });
-    }
-
-    private javax.swing.JButton client;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JPanel jPanel1;
-    private java.awt.Menu menu1;
-    private java.awt.Menu menu2;
-    private java.awt.Menu menu3;
-    private java.awt.Menu menu4;
-    private java.awt.MenuBar menuBar1;
-    private java.awt.MenuBar menuBar2;
-    private javax.swing.JButton server;
+    }    
 }

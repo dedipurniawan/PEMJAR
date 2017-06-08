@@ -30,7 +30,13 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.Document;
 
-public class NewJFrame_C extends javax.swing.JFrame  {
+public class NewJFrame_C extends javax.swing.JFrame {
+	// Variables declaration
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
+    
         String hostName;
         String portNum = "2222";
         String registryURL = "rmi://localhost:" + portNum + "/TB";
@@ -66,8 +72,7 @@ public class NewJFrame_C extends javax.swing.JFrame  {
  
     @SuppressWarnings("unchecked")
     //GEN-BEGIN:initComponents
-    private void initComponents() {
-
+   private void initComponents() {
     	jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -216,7 +221,7 @@ public class NewJFrame_C extends javax.swing.JFrame  {
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Notepad".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -248,11 +253,4 @@ public class NewJFrame_C extends javax.swing.JFrame  {
             }
         });
     }
-    
-    // Variables declaration
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    // End of variables declaration//GEN-END:variables
 }

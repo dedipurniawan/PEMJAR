@@ -41,10 +41,18 @@ import javax.swing.event.DocumentListener;
 import javax.swing.text.Document;
 
 public class NewJFrame_S extends javax.swing.JFrame {
+	//Variables declaration                   
+    private javax.swing.JMenu Open;
+    private javax.swing.JMenuItem Save;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea2;
+    
     Impl exportedObj = new Impl();
     public NewJFrame_S() throws RemoteException, MalformedURLException, NotBoundException {
 
-        initComponents();        
+    	initComponents();        
         String portNum = "2222", registryURL;
         try {
             startRegistry(Integer.parseInt(portNum));
@@ -89,7 +97,7 @@ public class NewJFrame_S extends javax.swing.JFrame {
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
-    private void initComponents() {
+      private void initComponents() {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -156,7 +164,7 @@ public class NewJFrame_S extends javax.swing.JFrame {
         );
 
         pack();
-    }                       
+    }                     
 
     ArrayList<String> textRequested = new ArrayList<String>();
     String textRequested1;
@@ -223,15 +231,15 @@ public class NewJFrame_S extends javax.swing.JFrame {
         try {
             exportedObj.setText1(jTextArea2.getText());
         } catch (RemoteException ex) {
-            Logger.getLogger(NewJFrame_C.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Notepad.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception e) {
         }
     }
-
+    
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Example".equals(info.getName())) {
+                if ("Notepad".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -260,15 +268,5 @@ public class NewJFrame_S extends javax.swing.JFrame {
                 }
             }
         });
-    }
-
-    // Variables declaration - do not modify                     
-    private javax.swing.JMenu Open;
-    private javax.swing.JMenuItem Save;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea2;
-    //private javax.swing.JMenu update;
-    // End of variables declaration                   
+    }                
 }
