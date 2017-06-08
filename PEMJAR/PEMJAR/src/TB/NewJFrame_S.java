@@ -21,10 +21,6 @@ import java.util.Scanner;
 import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -42,10 +38,11 @@ import javax.swing.text.Document;
 
 public class NewJFrame_S extends javax.swing.JFrame {
 	//Variables declaration                   
-    private javax.swing.JMenu Open;
+    private javax.swing.JMenu file;
     private javax.swing.JMenuItem Save;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem Open;
+    private javax.swing.JMenuItem Close;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea2;
     
@@ -101,9 +98,10 @@ public class NewJFrame_S extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
-        Open = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        Save = new javax.swing.JMenuItem();        
+        file = new javax.swing.JMenu();
+        Open = new javax.swing.JMenuItem();
+        Save = new javax.swing.JMenuItem(); 
+        Close = new javax.swing.JMenuItem();
         
         this.setSize(500, 300); // set the initial size of the window
 		this.setTitle("Simple Java Notepad - Server"); // set the title of the window
@@ -123,32 +121,37 @@ public class NewJFrame_S extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTextArea2);
 
-        Open.setText("File");
+        file.setText("File");       
+
+        Open.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
+        Open.setText("Open");
         Open.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OpenActionPerformed(evt);
+            	OpenActionPerformed(evt);
             }
         });
-
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem1.setText("Open");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        Open.add(jMenuItem1);
+        file.add(Open);
 
         Save.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         Save.setText("Save");
         Save.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SaveActionPerformed(evt);
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                SaveActionPerformed(e);
             }
         });
-        Open.add(Save);
+        file.add(Save);
+        
+        Close.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.CTRL_MASK));
+        Close.setText("Close");
+        Close.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                CloseactionPerformed(e);
+            }
+        });
+        file.add(Close);
+        
 
-        jMenuBar1.add(Open);
+        jMenuBar1.add(file);
        
         setJMenuBar(jMenuBar1); 
         
@@ -171,22 +174,76 @@ public class NewJFrame_S extends javax.swing.JFrame {
     Impl arrayListToSend = new Impl();
     private void jTextArea2KeyTyped(java.awt.event.KeyEvent evt) {                                    
 
-    }                                   
-
-    private void OpenActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
+    }                                                                     
 
     private void jTextArea2KeyPressed(java.awt.event.KeyEvent evt) {                                      
-        yangdilakukan();
-    }                                     
+        Proses();
+    }   
+    
+    public void CloseactionPerformed(java.awt.event.ActionEvent e) {
+		// if the source of the event was our "close" option
+		if (e.getSource() == this.Close)
+			this.dispose(); // dispose all resources and close the application
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+		// if the source was the "open" option
+		else if (e.getSource() == this.Open) {
+			JFileChooser open = new JFileChooser(); // open up a file chooser (a
+													// dialog for the user to
+													// browse files to open)
+			int option = open.showOpenDialog(this); // get the option that the
+													// user selected (approve or
+													// cancel)
+			// NOTE: because we are OPENing a file, we call showOpenDialog~
+			// if the user clicked OK, we have "APPROVE_OPTION"
+			// so we want to open the file
+			if (option == JFileChooser.APPROVE_OPTION) {
+				this.jTextArea2.setText(""); // clear the TextArea before applying
+											// the file contents
+				try {
+					// create a scanner to read the file
+					// (getSelectedFile().getPath() will get the path to the
+					// file)
+					Scanner scan = new Scanner(new FileReader(open.getSelectedFile().getPath()));
+					while (scan.hasNext()) // while there's still something to
+											// read
+						this.jTextArea2.append(scan.nextLine() + "\n"); 
+				} catch (Exception ex) { // catch any exceptions, and...
+					// ...write to the debug console
+					System.out.println(ex.getMessage());
+				}
+			}
+		}
+
+		// and lastly, if the source of the event was the "save" option
+		else if (e.getSource() == this.Save) {
+			JFileChooser save = new JFileChooser(); // again, open a file
+													// chooser
+			int option = save.showSaveDialog(this); // similar to the open file,
+													// only this time we call
+			// showSaveDialog instead of showOpenDialog
+			// if the user clicked OK (and not cancel)
+			if (option == JFileChooser.APPROVE_OPTION) {
+				try {
+					// create a buffered writer to write to a file
+					BufferedWriter out = new BufferedWriter(new FileWriter(save.getSelectedFile().getPath()));
+					out.write(this.jTextArea2.getText()); // write the contents of
+														// the TextArea to the
+														// file
+					out.close(); // close the file stream
+				} catch (Exception ex) { // again, catch any exceptions and...
+					// ...write to the debug console
+					System.out.println(ex.getMessage());
+				}
+			}
+		}
+	}
+
+    private void OpenActionPerformed(java.awt.event.ActionEvent evt) {                                           
         //open
         JFileChooser dialog = new JFileChooser();
-        //File file = open.getSelectedFile();
+        //file filee = Open.getSelectedFile();
         //String dir = file.getAbsolutePath();
-        jTextArea2.setText(null);
+        jTextArea2.setText("");
      
         int returnVal = dialog.showOpenDialog(this);
 
@@ -198,7 +255,7 @@ public class NewJFrame_S extends javax.swing.JFrame {
                 BufferedReader br = new BufferedReader(new InputStreamReader(in));               
                 String strLine;
                 while ((strLine = br.readLine()) != null){
-                    StringTokenizer st = new StringTokenizer(strLine, ",");
+                    StringTokenizer st = new StringTokenizer(strLine, "");
                     jTextArea2.setText(jTextArea2.getText() + st.nextToken() +"\n");
                 }
                 in.close();
@@ -214,7 +271,7 @@ public class NewJFrame_S extends javax.swing.JFrame {
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {                                     
         // save
         JFileChooser chooser = new JFileChooser();
-        chooser.setCurrentDirectory(new File("E:\\"));
+        chooser.setCurrentDirectory(new File("D:\\"));
         int retrival = chooser.showSaveDialog(this);
         if (retrival == JFileChooser.APPROVE_OPTION) {
             try (FileWriter keluar = new FileWriter(chooser.getSelectedFile().getPath() + ".txt")) {
@@ -227,7 +284,7 @@ public class NewJFrame_S extends javax.swing.JFrame {
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {}                                      
 
-    public void yangdilakukan() {
+    public void Proses() {
         try {
             exportedObj.setText1(jTextArea2.getText());
         } catch (RemoteException ex) {

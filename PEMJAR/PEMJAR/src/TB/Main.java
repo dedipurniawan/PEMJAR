@@ -79,23 +79,10 @@ public class Main extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        menu1.setLabel("File");
-        menuBar1.add(menu1);
-
-        menu2.setLabel("Edit");
-        menuBar1.add(menu2);
-
-        menu3.setLabel("File");
-        menuBar2.add(menu3);
-
-        menu4.setLabel("Edit");
-        menuBar2.add(menu4);
 
         jMenuItem1.setText("jMenuItem1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);        
         
         client.setText("CLIENT");
         client.addActionListener(new java.awt.event.ActionListener() {
@@ -160,7 +147,7 @@ public class Main extends javax.swing.JFrame {
     	//GEN-FIRST:event_serverActionPerformed
     	//server.enable(false);
         try {
-                    System.out.println("Notepad");
+                System.out.println("Notepad");
                     server.setEnabled(false);
                     new NewJFrame_S().setVisible(true);
                 } catch (RemoteException ex) {
